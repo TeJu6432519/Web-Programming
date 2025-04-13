@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Airline Seat Assignment</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #boardingPass {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      width: 300px;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Airline Seat Reservation System</h2>
+  
+  <p>Please enter your details to book a seat.</p>
+
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" placeholder="Enter your name" required>
+  <br><br>
+
+  <label for="class">Choose a class:</label>
+  <select id="class">
+    <option value="1">First Class (Seats 1-5)</option>
+    <option value="2">Economy Class (Seats 6-10)</option>
+  </select>
+  <br><br>
+
+  <button onclick="assignSeat()">Reserve Seat</button>
+
+  <div id="boardingPass"></div>
+
+  <script>
+    // Array representing the seating chart (0 means empty, 1 means occupied)
+    const seats = new Array(10).fill(0); // Array of 10 seats, all initially empty
+
+    function assignSeat() {
+      const name = document.getElementById('name').value.trim();
+      const classChoice = document.getElementById('class').value;
+
+      if (name === "") {
+        alert("Please enter your name.");
+        return;
+      }
+
+      let seatAssigned = false;
+      let seatNumber = -1;
+
+      if (classChoice == "1") {  // First-class (Seats 1-5)
+        for (let i = 0; i < 5; i++) {
+          if (seats[i] === 0) {
+            seatAssigned = true;
+            seatNumber = i + 1;
+            seats[i] = 1; // Mark seat as taken
+            break;
+          }
+        }
+
+        if (!seatAssigned) {
+          const acceptEconomy = confirm("First-class is full. Would you like to be placed in Economy class?");
+          if (acceptEconomy) {
+            // Try to assign an economy class seat
+            for (let i = 5; i < 10; i++) {
+              if (seats[i] === 0) {
+                seatAssigned = true;
+                seatNumber = i + 1;
+                seats[i] = 1; // Mark seat as taken
+                break;
+              }
+            }
+          }
+        }
+      } else if (classChoice == "2") {  // Economy (Seats 6-10)
+        for (let i = 5; i < 10; i++) {
+          if (seats[i] === 0) {
+            seatAssigned = true;
+            seatNumber = i + 1;
+            seats[i] = 1; // Mark seat as taken
+            break;
+          }
+        }
+
+        if (!seatAssigned) {
+          const acceptFirstClass = confirm("Economy class is full. Would you like to be placed in First class?");
+          if (acceptFirstClass) {
+            // Try to assign a first-class seat
+            for (let i = 0; i < 5; i++) {
+              if (seats[i] === 0) {
+                seatAssigned = true;
+                seatNumber = i + 1;
+                seats[i] = 1; // Mark seat as taken
+                break;
+              }
+            }
+          }
+        }
+      }
+
+      if (seatAssigned) {
+        // Display the boarding pass
+        const boardingPass = `
+          <h3>Boarding Pass</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Seat Number:</strong> ${seatNumber}</p>
+          <p><strong>Class:</strong> ${classChoice == "1" ? "First Class" : "Economy Class"}</p>
+        `;
+        document.getElementById('boardingPass').innerHTML = boardingPass;
+      } else {
+        alert("Sorry, no seats are available at the moment.");
+      }
+    }
+  </script>
+
+</body>
+</html>

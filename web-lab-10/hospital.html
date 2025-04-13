@@ -1,0 +1,52 @@
+
+<html>
+<head>
+    <title>23BCE1239</title>
+    <script>
+        const patients = [
+            { PId: 1, Name: "Alen", Age: 39 },
+            { PId: 2, Name: "Deena", Age: 47 },
+            { PId: 3, Name: "Diana", Age: 21 },
+            { PId: 4, Name: "Jack", Age: 54 },
+            { PId: 5, Name: "Jain", Age: 23 },
+            { PId: 6, Name: "Kelvin", Age: 61 },
+            { PId: 7, Name: "Louis", Age: 69 },
+            { PId: 8, Name: "Rex", Age: 49 }
+        ];
+        
+        // (i) Sort patients in descending order by age
+        function sortPatientsByAgeDescending() {
+            const sortedPatients = [...patients].sort((a, b) => b.Age - a.Age);
+            document.getElementById("output").innerText = JSON.stringify(sortedPatients, null, 2);
+        }
+
+        // (ii) Check if a particular P-Id is present
+        function isPatientPresent() {
+            const PId = parseInt(document.getElementById("pidInput").value);
+            const found = patients.some(patient => patient.PId === PId);
+            document.getElementById("output").innerText = found ? "Patient found" : "Patient not found";
+        }
+
+        // (iii) Filter patients by age range
+        function filterPatientsByAgeRange() {
+            const minAge = parseInt(document.getElementById("minAge").value);
+            const maxAge = parseInt(document.getElementById("maxAge").value);
+            const filteredPatients = patients.filter(patient => patient.Age >= minAge && patient.Age <= maxAge);
+            document.getElementById("output").innerText = JSON.stringify(filteredPatients, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Hospital Data Analysis</h1>
+    <button onclick="sortPatientsByAgeDescending()">Sort by Age (Descending)</button>
+    <br><br>
+    <input type="number" id="pidInput" placeholder="Enter P-Id">
+    <button onclick="isPatientPresent()">Check P-Id</button>
+    <br><br>
+    <input type="number" id="minAge" placeholder="Min Age">
+    <input type="number" id="maxAge" placeholder="Max Age">
+    <button onclick="filterPatientsByAgeRange()">Filter by Age Range</button>
+    <br><br>
+    <pre id="output"></pre>
+</body>
+</html>

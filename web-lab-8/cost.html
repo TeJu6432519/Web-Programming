@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>
+            Labour cost and total charge.
+        </title>
+    </head>
+    <body>
+        <h1> Labour cost and total charge.</h1>
+        <script>
+            let ratePerHour=parseInt(prompt("Enter Rate per Hour: "));
+            let hrs=parseInt(prompt("Enter number of work hours: "));
+            let LabourCost=ratePerHour*hrs;
+            alert("Labour Cost is: "+LabourCost);
+            let cost=parseInt(prompt("Enter cost of Materials: "));
+            let totalCharge=cost+LabourCost;
+            alert("Total Cost: "+totalCharge);
+        </script>
+    </body>
+</html>

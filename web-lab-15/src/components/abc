@@ -1,0 +1,1183 @@
+
+Wl-13
+
+```
+Day.js
+
+import React from 'react';
+
+function Day(){
+    const days=["monday","tuesday","wednesday","thursday","friday"]
+    const today=new Date().getDay();
+
+return(
+    <h3>
+    Today is: {days[today-1]}
+    </h3>
+);
+}
+
+export default Day;
+
+List.js
+
+import React,{useState} from 'react';
+
+function Fruit(){
+    const [List,setList]=useState([]);
+    const [InputValue,setInputValue]=useState("");
+
+    const handleChange = (event)=>{
+        setInputValue(event.target.value);
+    };
+
+    const addFruit = () =>{
+        if(InputValue.trim()!=""){
+            setList([...List,InputValue]);
+            setInputValue("");
+        }
+    };
+
+    return (
+        <>
+        <input type="text" name="fruit1" onChange={handleChange}/>
+        <button onClick={addFruit}>Add</button>
+        <ul>
+            {
+            List.map(
+                (fruit,index)=>(<li key={index}>{fruit}</li>)
+            )
+            }
+        </ul>
+        </>
+    );
+}
+
+export default Fruit;
+
+Hello with jsx.js
+
+import React, { useState } from 'react';
+
+function Greeting({isMorning}){
+return(
+    <>
+    {isMorning?"Good Morning!":"Good Evening!"}
+    </>
+);
+}
+
+export default Greeting;
+
+Hello without jsx.js
+
+import React from 'react';
+
+function Hello2(){
+return(
+    <>
+    <h1>Hello, React! using jsx.</h1>
+    </>
+);
+}
+
+export default Hello2;
+import React, { createElement } from 'react';
+
+function Hello(){
+    const Message="This is a message.";
+
+    return createElement(
+        "div",
+        null,
+        createElement("h1",null,"Hello, React! without jsx"),
+        createElement("p",null,Message)
+    );
+}
+
+export default Hello;
+import React from 'react';
+
+function Inline_CSS(){
+return(
+    <>
+    <div style={{color:"white", backgroundColor:"pink", padding:"20px",borderRadius:"20px",width:"100px", textAlign:"center",fontFamily:"monospace",fontWeight:"bolder"}}>Inline CSS</div>
+    </>
+);
+}
+
+export default Inline_CSS;
+
+Leap year.js
+
+import React from 'react';
+
+function Leap(){
+
+    const chkLeap=()=>{
+        const yr=parseInt(document.getElementById("leap").value);
+        if((yr%4==0 && yr%100!=0)||(yr%400==0)){
+            alert("it is a leap yr!");
+        }
+        else{
+            alert("it is not a leap yr..");
+        }
+    }
+
+return(
+    <>
+    Year to check is Leap: <input type="text" id="leap"/>
+    <button onClick={chkLeap}>chk if Leap Yr</button>
+    </>
+);
+}
+
+export default Leap;
+
+palindrome.js
+
+import React, { useState } from 'react';
+
+function Rev(){
+    const [rev,setrev]=useState("");
+    const [p,setP]=useState("");
+
+    const handleChange=()=>{
+        const txt=document.getElementById("txt").value;
+        const rtxt=txt.split("").reverse().join("");
+        setrev(rtxt);
+        if(txt==rtxt){
+            setP(true);
+        }
+        else{
+            setP(false);
+        }
+        
+    }
+
+    const chkPali=()=>{
+        if (p==true){
+            alert("Is a palindrome!");
+        }
+        else{
+            alert("Not a palindrome..");
+        }
+    }
+
+return(
+    <p>
+    enter text to reverse: <input type="text" id="txt" onChange={handleChange} style={{marginRight:"20px"}}/>
+    reversed text:<textarea readonly value={rev} style={{marginRight:"20px"}}></textarea>
+    <button onClick={chkPali}>chk pali</button>
+    </p>
+);
+}
+
+export default Rev;
+
+Prime.js
+
+import React from 'react';
+
+function Prime(){
+
+    const isPrime=()=>{
+        const number=parseInt(document.getElementById("num").value);
+        
+        let flag=1;
+        if(number<2){flag=0};
+        for(let i=2;i<number;i++){
+            if(number%i==0){
+                flag=0;
+            }
+        }
+        if(flag==0){
+            alert("not prime..");
+        }
+        else{
+            alert("is prime!");
+        }
+        
+    };
+
+return(
+    <>
+     num: <input type="text" name="num" id="num" style={{marginRight:"20px"}}/>
+    <button onClick={isPrime}>chk if prime</button><br/><br/>
+    </>
+);
+}
+
+export default Prime;
+
+Random number.js
+
+import React, { useState } from 'react';
+
+
+function Random(){
+
+    const [r,setR]=useState("");
+
+    const genR=()=>{
+        const rand=Math.floor(Math.random()*100)+1;
+        setR(rand);
+    }
+return(
+    <>
+    <button onClick={genR}>Gen random no.</button>
+    Random number generated: <textarea readonly value={r}></textarea>
+    </>
+);
+}
+
+export default Random;
+
+Square sum.js
+
+import React, { useState } from 'react';
+
+function SquareSum(){
+    const[result,setResult]=useState("");
+
+    const handlecalc=()=>{
+        const inp1=parseInt(document.getElementById("num1").value);
+        const inp2=parseInt(document.getElementById("num2").value);
+        const res=(inp1**2)+(inp2**2);
+        setResult(res);
+    }
+
+return(
+    <>
+    <p>
+    num1: <input type="text" name="num1" id="num1" style={{marginRight:"20px"}}/>
+    num2: <input type="text" name="num2" id="num2" style={{marginRight:"20px"}}/>
+    <button onClick={handlecalc}>calc square sum</button><br/><br/>
+    sum of squares: <textarea readOnly value={result}></textarea>
+    </p>
+    </>
+);
+}
+
+export default SquareSum;
+
+temp.js
+
+import React, { useState } from 'react';
+
+function Temp(){
+
+    const [F,setF]=useState("");
+    const[C,setC]=useState("");
+
+    const calcC=()=>{
+        const f=parseFloat(document.getElementById("f").value);
+        const res1= (((f - 32) * 5) / 9).toFixed(2);
+        setC(res1);
+    }
+
+    const calcF=()=>{
+        const c=parseFloat(document.getElementById("c").value);
+        const res2= ((c * 9) / 5 + 32).toFixed(2);
+        setF(res2);
+    }
+
+return(
+    <>
+    Celcius: <input type="text" id="c" onChange={calcF}style={{ marginRight: "20px" }}/>
+    converted Fahrenheit: <textarea readonly value={F}>°F</textarea><br/><br/>
+    Fahrenheit: <input type="text" id="f" onChange={calcC}style={{ marginRight: "20px" }}/>
+    converted Celcius:<textarea readonly value={C}>°C</textarea>
+    </>
+);
+}
+
+export default Temp;
+import React, { Component } from 'react';
+
+class UserGreeting extends React.Component{
+    render(){
+        return(
+            <h2>
+                Hello, {this.props.firstName} {this.props.lastName} !
+            </h2>
+        );
+    }
+}
+
+export default UserGreeting;
+
+app.js
+
+import logo from './logo.svg';
+import './App.css';
+import Hello from './components/Hello_without_JSX';
+import Hello2 from './components/Hello_with_JSX';
+import Fruit from './components/Fruit_list';
+import Inline_CSS from './components/Inline_css'
+import SquareSum from './components/Squares_sum'
+import Greeting from './components/greeting'
+import Day from './components/day'
+import Prime from './components/prime'
+import Temp from './components/temp'
+import Rev from './components/pali'
+import Random from './components/random'
+import Leap from './components/leapYr'
+import UserGreeting from './components/userGreeting'
+
+function App() {
+  return (
+    <>
+    <Hello/><br/>
+    <Hello2/><br/>
+    <Fruit/><br/><br/>
+    <Inline_CSS/>
+    <SquareSum/><br/>
+    <Greeting isMorning={false}/>
+    <Day/>
+    <Prime/>
+    <Temp/><br/><br/><br/>
+    <Rev/>
+    <Random/><br/><br/>
+    <Leap/><br/><br/>
+    <UserGreeting firstName="Abc" lastName=".S"/>
+    </>
+  );
+}
+
+export default App;
+
+Wl-14
+
+form.js
+
+import React, { useState } from "react";
+
+function Form() {
+    const [formData, setFormData] = useState({
+        username: "",
+        password: "",
+        city: "",
+        webServer: "",
+        role: "",
+        signOn: []
+    });
+
+    const handleChange = (e) => {
+        const { name, value, type, checked } = e.target;
+        if (type === "checkbox") {
+            setFormData((prevData) => ({
+                ...prevData,
+                signOn: checked
+                    ? [...prevData.signOn, value]
+                    : prevData.signOn.filter((item) => item !== value),
+            }));
+        } else {
+            setFormData({ ...formData, [name]: value });
+        }
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form Submitted:", formData);
+        alert("Form Submitted!!");
+    };
+
+    return (
+        <form onSubmit={handleSubmit} >
+            <h2>Novell Service Login</h2>
+
+            <label >Username: </label>
+            <input type="text" id="username" name="username" value={formData.username} onChange={handleChange} />
+            <br /><br />
+
+            <label>Password: </label>
+            <input type="password" id="password" name="password" value={formData.password} onChange={handleChange} />
+            <br /><br />
+
+            <label>City of Employment: </label>
+            <input type="text" id="city" name="city" value={formData.city} onChange={handleChange} />
+            <br /><br />
+
+            <label>Web Server: </label>
+            <select id="webServer" name="webServer" value={formData.webServer} onChange={handleChange}>
+                <option value="">--Choose a Server--</option>
+                <option value="server1">Server 1</option>
+                <option value="server2">Server 2</option>
+                <option value="server3">Server 3</option>
+                <option value="server4">Server 4</option>
+                <option value="server5">Server 5</option>
+            </select>
+            <br /><br />
+
+            <label>Please specify your role: </label>
+            <br />
+            <input type="radio" name="role" value="Admin" checked={formData.role === "Admin"} onChange={handleChange} /> Admin
+            <br />
+            <input type="radio" name="role" value="Engineer" checked={formData.role === "Engineer"} onChange={handleChange} /> Engineer
+            <br />
+            <input type="radio" name="role" value="Manager" checked={formData.role === "Manager"} onChange={handleChange} /> Manager
+            <br />
+            <input type="radio" name="role" value="Guest" checked={formData.role === "Guest"} onChange={handleChange} /> Guest
+            <br /><br />
+
+            <label>Single sign-on to the following: </label>
+            <br />
+            <input type="checkbox" name="signOn" value="Mail" checked={formData.signOn.includes("Mail")} onChange={handleChange} /> Mail
+            <br />
+            <input type="checkbox" name="signOn" value="Payroll" checked={formData.signOn.includes("Payroll")} onChange={handleChange} /> Payroll
+            <br />
+            <input type="checkbox" name="signOn" value="Self-Service" checked={formData.signOn.includes("Self-Service")} onChange={handleChange} /> Self-Service
+            <br /><br />
+
+            <button type="submit">Login</button>
+            <button type="reset" onClick={() => setFormData({ username: "", password: "", city: "", webServer: "", role: "", signOn: [] })}>
+                Reset
+            </button>
+        </form>
+    );
+}
+
+export default Form;
+
+Profile img.js
+
+import React from 'react';
+
+function ProfileImg(){
+    return(
+        <div  style={{textAlign:"center"}}>
+        <img 
+        src="pic3.png"
+        alt="pfp" 
+        style={{width:"170px",
+                height:"200px",
+                borderRadius:"100%",
+                
+        }}
+        />
+        </div>
+    );
+}
+
+export default ProfileImg;
+
+user info.js
+
+import React from 'react';
+
+function UserInfo(){
+    return(
+        <>
+        <h4 style={{fontFamily:"sans-serif"}}>
+            <p style={{textAlign:"center"}}>
+            Tejaswwini SS<br/><br/>
+            tejaswwini.ss2023@vitstudent.ac.in<br/><br/>
+            Developer | Tech Enthusiast | Problem Solver<br/>
+           </p>
+           
+           <div style={{fontFamily:"sans-serif",padding:"20px",backgroundColor:"rgba(128, 128, 128, 0.6)",borderRadius:"20px",margin:"200px",marginTop:"50px"}}>
+           I am a passionate developer with experience in React, JavaScript, and full-stack development. I enjoy building clean, efficient, and user-friendly applications while constantly learning new technologies.
+            <ul style={{fontFamily:"sans-serif",backgroundColor:"rgba(158, 128, 148, 0.6)",padding:"20px",borderRadius:"20px"}}>
+                <li style={{fontFamily:"sans-serif",backgroundColor:"rgba(128, 128, 128, 0.0)",marginLeft:"30px"}}>Tech Stack: React, JavaScript, HTML, CSS, Node.js</li>
+                <li style={{fontFamily:"sans-serif",backgroundColor:"rgba(128, 128, 128, 0.0)",marginLeft:"30px"}}>Interests: Web development, UI/UX design, and automation</li>
+                <li style={{fontFamily:"sans-serif",backgroundColor:"rgba(128, 128, 128, 0.0)",marginLeft:"30px"}}>Projects: Currently working on virtualization setups and boot loader implementation</li>
+            </ul>
+            When I'm not coding, you can find me exploring new frameworks, contributing to open-source projects, or solving real-world tech problems.
+           </div>
+            
+        </h4>
+        </>
+    );
+}
+
+export default UserInfo;
+
+User posts.js
+
+import { useEffect, useState } from "react";
+
+const UserPosts = ({ userId }) => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch(`/api/posts?userId=${userId}`);
+        const data = await response.json();
+        setPosts(data.length > 0 ? data : generateRandomPosts());
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+        setPosts(generateRandomPosts());
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, [userId]);
+
+  const generateRandomPosts = () => {
+    return Array.from({ length: 5 }, (_, i) => ({
+      id: i + 1,
+      title: `Random Post ${i + 1}`,
+      body: "This is a randomly generated post description."
+    }));
+  };
+
+  return (
+    <div>
+      {loading ? (
+        <p>Loading posts...</p>
+      ) : posts.length > 0 ? (
+        posts.map((post) => (
+          <div key={post.id} style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "10px" }}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </div>
+        ))
+      ) : (
+        <p>No posts found.</p>
+      )}
+    </div>
+  );
+};
+
+export default UserPosts;
+
+PfpPage-
+
+import React from 'react';
+import ProfileImg from './components/profileImage';
+import UserInfo from './components/userInfo';
+import UserPosts from './components/userPosts';
+
+function ProfilePage(){
+    return(
+        <div>
+        <ProfileImg/><br/>
+        <UserInfo/>
+        <UserPosts/>
+        </div>
+    );
+}
+
+export default ProfilePage;
+
+app.js
+
+import logo from './logo.svg';
+import './App.css';
+import Form from './components/form';
+
+function App() {
+  return (
+    <>
+    <img src="pic1.jpg" alt="sky" width="300px" height="200px"/><br/><br/>
+    <img src={require("./images/2.JPG")} alt="building" width="300px" height="200px"/><br/><br/>
+    <Form/><br/><br/>
+    </>
+  );
+}
+
+export default App;
+
+index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import ProfilePage from './profilePage';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App/>
+    <ProfilePage/>
+  </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+
+
+Wl-15
+
+Header.js-
+
+import React from 'react';
+
+function Header({title}){
+    return(
+        <>
+        <h1 style={{textAlign:"center"}}>{title}</h1>
+        </>
+    );
+}
+
+export default Header;
+ 
+Content.js-
+
+import React, { useState } from 'react';
+
+function Content() {
+  const [joke, setJoke] = useState('');
+
+  const fetchJoke = async () => {
+    try {
+      const response = await fetch('https://official-joke-api.appspot.com/random_joke');
+      const data = await response.json();
+      setJoke(`${data.setup} - ${data.punchline}`);
+    } catch (error) {
+      setJoke('Failed to fetch joke.');
+    }
+  };
+
+  return (
+    <div>
+      <button onClick={fetchJoke}>Get a Joke</button>
+      <p>{joke}</p>
+    </div>
+  );
+}
+
+export default Content;
+
+Footer.js-
+
+import React from 'react';
+
+function Footer() {
+  return (
+    <footer style={{position:"relative",marginTop:"auto",textAlign:"center"}}>
+      <p>&copy; 2025 My React App</p>
+    </footer>
+  );
+}
+
+export default Footer;
+
+Lifecycle.js-
+
+import React, { Component } from 'react';
+
+class LifecycleDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
+    console.log('constructor: Component is being initialized');
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount: Component has been mounted to the DOM');
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate: Component has been updated');
+    console.log('Previous state:', prevState.count);
+    console.log('Current state:', this.state.count);
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount: Component is about to be unmounted');
+  }
+
+  updateState = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
+  render() {
+    console.log('render: Component is rendering');
+    return (
+      <div>
+        <h2>Lifecycle Demo</h2>
+        <p>Count: {this.state.count}</p>
+        <button onClick={this.updateState}>Update State</button>
+      </div>
+    );
+  }
+}
+
+export default LifecycleDemo;
+
+Stylebutton-inline css-
+
+import React from 'react';
+
+function StyledButton1({ onClick, text }) {
+  const buttonStyle = {
+    backgroundColor: 'blue',
+    padding: '10px 20px',
+    fontSize: '16px',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    width:"200px",
+    cursor:"pointer"
+  };
+
+  return <button style={buttonStyle} onClick={onClick}>{text}</button>;
+}
+
+export default StyledButton1;
+
+Style- button internal css-
+
+import React from 'react';
+
+function StyledButton2({ onClick, text }) {
+  return (
+    <div>
+      <style>
+        {`
+          .styled-btn {
+            background-color: green;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        `}
+      </style>
+      <button className="styled-btn" onClick={onClick}>{text}</button>
+    </div>
+  );
+}
+
+export default StyledButton2;
+
+Style button external css-
+
+import React from 'react';
+import './styles.css';
+
+function StyledButton3({ onClick, text }) {
+  return <button className="styled-btn3" onClick={onClick}>{text}</button>;
+}
+
+export default StyledButton3;
+
+styles.css-
+
+.styled-btn3{
+    background-color: red;
+    padding: 12px 24px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+Counter -use state hook-
+
+import React, { useState } from 'react';
+
+const CounterWithState = () => {
+  const [count, setCount] = useState(0);
+
+  const increase = () => {
+    setCount(count + 1);
+  };
+
+  const decrease = () => {
+    setCount(count - 1);
+  };
+
+  return (
+    <div>
+      <h2>Counter (useState)</h2>
+      <p>Count: {count}</p>
+      <button onClick={increase}>Increase</button>
+      <button onClick={decrease}>Decrease</button>
+    </div>
+  );
+};
+
+export default CounterWithState;
+
+Counter use reducer hook-
+
+import React, { useReducer } from 'react';
+
+const initialState = { count: 0 };
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return { count: state.count + 1 };
+    case 'decrement':
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+const CounterWithReducer = () => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const increase = () => {
+    dispatch({ type: 'increment' });
+  };
+
+  const decrease = () => {
+    dispatch({ type: 'decrement' });
+  };
+
+  return (
+    <div>
+      <h2>Counter (useReducer)</h2>
+      <p>Count: {state.count}</p>
+      <button onClick={increase}>Increase</button>
+      <button onClick={decrease}>Decrease</button>
+    </div>
+  );
+};
+
+export default CounterWithReducer;
+
+Focus use ref hook-
+
+import React, { useRef } from 'react';
+
+const FocusForm = () => {
+  // Create a ref for the input field
+  const inputRef = useRef(null);
+
+  // Function to handle the button click and focus the input field
+  const handleFocus = () => {
+    inputRef.current.focus(); // Focus the input field using the ref
+  };
+
+  return (
+    <div>
+      <h2>Focus on Input Field</h2>
+      <form>
+        <input 
+          ref={inputRef} 
+          type="text" 
+          placeholder="Click the button to focus me!" 
+        />
+        <button type="button" onClick={handleFocus}>Focus Input</button>
+      </form>
+    </div>
+  );
+};
+
+export default FocusForm;
+
+Joke with use effect Hook-
+
+import React, { useState, useEffect } from 'react';
+
+const JokeComponent = () => {
+  const [joke, setJoke] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Function to fetch a random joke from the API
+  const fetchJoke = async () => {
+    setLoading(true); // Set loading state to true before fetching
+    try {
+      const response = await fetch('https://official-joke-api.appspot.com/random_joke');
+      const data = await response.json();
+      setJoke(`${data.setup} - ${data.punchline}`);
+      setLoading(false); // Set loading state to false after receiving data
+    } catch (err) {
+      setError('Failed to fetch joke.');
+      setLoading(false);
+    }
+  };
+
+  // Fetch joke when component mounts
+  useEffect(() => {
+    fetchJoke();
+  }, []); // Empty dependency array ensures this runs only once on mount
+
+  return (
+    <div>
+      <h2>Random Joke</h2>
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <p>{joke}</p>
+      )}
+      <button onClick={fetchJoke}>Get New Joke</button>
+    </div>
+  );
+};
+
+export default JokeComponent;
+
+Theme with use context hook-
+
+// ThemeContext.js
+import React, { createContext, useState, useContext } from 'react';
+
+// Create a Context for the theme
+const ThemeContext = createContext();
+
+// ThemeProvider component to manage the theme state and provide it to the app
+export const ThemeProvider = ({ children }) => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDarkMode(prevMode => !prevMode);
+  };
+
+  return (
+    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// Custom hook to use the theme context
+export const useTheme = () => useContext(ThemeContext);
+
+Form with use state-
+
+import React, { useState } from 'react';
+
+const FormWithState = () => {
+  const [formData, setFormData] = useState({ name: '', email: '' });
+
+  // Handle input change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Submitted Name: ${formData.name}, Email: ${formData.email}`);
+  };
+
+  return (
+    <div>
+      <h2>Form with useState</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name: </label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Email: </label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+      <h3>Live Preview:</h3>
+      <p>Name: {formData.name}</p>
+      <p>Email: {formData.email}</p>
+    </div>
+  );
+};
+
+export default FormWithState;
+
+Form with use ref-
+
+import React, { useRef } from 'react';
+
+const FormWithRef = () => {
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    alert(`Submitted Name: ${name}, Email: ${email}`);
+  };
+
+  return (
+    <div>
+      <h2>Form with useRef</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name: </label>
+          <input type="text" ref={nameRef} />
+        </div>
+        <div>
+          <label>Email: </label>
+          <input type="email" ref={emailRef} />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default FormWithRef;
+
+Props-
+
+parent.js-
+
+// Parent1.js
+import React from 'react';
+import Child from './child1'; // Import the Child component
+
+const Parent = () => {
+  const message = "Hello from Parent!";
+
+  return (
+    <div>
+      <h1>Parent Component</h1>
+      <Child message={message} /> {/* Pass the message prop to the Child component */}
+    </div>
+  );
+};
+
+export default Parent;
+
+child1.js
+
+// Child.js
+import React from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes for prop validation
+
+const Child = ({ message }) => {
+  return (
+    <div>
+      <h2>Child Component</h2>
+      <p>{message}</p>
+    </div>
+  );
+};
+
+// Validate the props
+Child.propTypes = {
+  message: PropTypes.string.isRequired, // message must be a string and is required
+};
+
+export default Child;
+
+app.css
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*{
+  background-color: black;
+  color:white;
+}
+
+/* Apply flexbox layout to ensure footer stays at the bottom */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the container takes full height of the screen */
+}
+
+.content-container {
+  flex-grow: 1; /* This allows the content area to take up the available space */
+}
+
+app.js
+
+import logo from './logo.svg';
+import './App.css';
+import Header from './components/header';
+import Content from './components/content';
+import Footer from './components/footer';
+import StyledButton1 from './components/styleButton_inline';
+import StyledButton2 from './components/styleButton_internal';
+import StyledButton3 from './components/styledButton_external';
+import LifecycleDemo from './components/lifecycle';
+import CounterWithState from './components/usestateHook';
+import CounterWithReducer from './components/usereducerHook';
+import JokeComponent from './components/useeffectHook';
+import FocusForm from './components/userefHook';
+import { useTheme } from './components/usecontextHook';
+import Parent from './components/parent1';
+import FormWithState from './components/form-usestate';
+import FormWithRef from './components/form-useref';
+
+function App() {
+  return (
+    <>
+    <div className="app-container">
+      <Header title="My React App" />
+      <div className="content-container">
+        <Content />
+        <StyledButton1 text="hello"/><br/><br/>
+        <StyledButton2 text="hey"/><br/><br/>
+        <StyledButton3 text="hi"/><br/><br/>
+        <LifecycleDemo/><br/><br/>
+        <CounterWithState/><br/><br/>
+        <CounterWithReducer/><br/><br/> 
+        <JokeComponent/><br/><br/> 
+        <FocusForm/><br/><br/> 
+        <useTheme/><br/><br/> 
+        <Parent/><br/><br/> 
+        <FormWithState/><br/><br/> 
+        <FormWithRef/>
+      </div>
+      <Footer />
+    </div>
+    </>
+  );
+}
+
+export default App;
+```

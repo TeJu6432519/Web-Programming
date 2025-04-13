@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23bce1239</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Dynamic Charts</h1>
+    <div id="barChart" style="width: 600px; height: 400px;"></div>
+    <div id="lineChart" style="width: 600px; height: 400px;"></div>
+    <div id="pieChart" style="width: 600px; height: 400px;"></div>
+    <div id="donutChart" style="width: 600px; height: 400px;"></div>
+
+    <script>
+        // Bar Chart
+        const barData = [{
+            x: ['A', 'B', 'C', 'D'],
+            y: [20, 14, 23, 25],
+            type: 'bar'
+        }];
+        const barLayout = {
+            title: 'Bar Chart Example',
+            xaxis: { title: 'Categories' },
+            yaxis: { title: 'Values' }
+        };
+        Plotly.newPlot('barChart', barData, barLayout);
+
+        // Line Chart
+        const lineData = [{
+            x: [1, 2, 3, 4, 5],
+            y: [10, 15, 13, 17, 20],
+            mode: 'lines+markers',
+            type: 'scatter'
+        }];
+        const lineLayout = {
+            title: 'Line Chart Example',
+            xaxis: { title: 'X Axis' },
+            yaxis: { title: 'Y Axis' }
+        };
+        Plotly.newPlot('lineChart', lineData, lineLayout);
+
+        // Pie Chart
+        const pieData = [{
+            labels: ['A', 'B', 'C'],
+            values: [10, 20, 30],
+            type: 'pie'
+        }];
+        const pieLayout = {
+            title: 'Pie Chart Example'
+        };
+        Plotly.newPlot('pieChart', pieData, pieLayout);
+
+        // Donut Chart
+        const donutData = [{
+            labels: ['A', 'B', 'C'],
+            values: [10, 20, 30],
+            type: 'pie',
+            hole: 0.4
+        }];
+        const donutLayout = {
+            title: 'Donut Chart Example'
+        };
+        Plotly.newPlot('donutChart', donutData, donutLayout);
+    </script>
+</body>
+</html>

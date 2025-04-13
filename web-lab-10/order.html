@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23BCE1239</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #a0a78d;
+            padding: 20px;  
+            border-radius: 10px;
+            width: 350px;
+        }
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        input[type="text"], input[type="number"], input[type="email"] {
+            width: 100%;
+            padding: 5px;
+            margin: 5px 0;
+        }
+        .submit-btn {
+            background-color: #b07941;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Grocery Order Form</h2>
+        <label>Customer Name</label>
+        <input type="text" id="customerName" placeholder="Enter your name">
+
+        <label>Phone Number</label>
+        <input type="text" id="phoneNumber" placeholder="Enter phone number">
+
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter email">
+
+        <h3>Products</h3>
+        
+        <div class="product">
+            <input type="checkbox" class="product-check" data-name="Apple" data-price="10">
+            <img src="apple.jpg" alt="Apple">
+            <label>Apple $10/kg</label>
+            <input type="number" class="product-qty" min="1" max="10" value="1" disabled>
+        </div>
+
+        <div class="product">
+            <input type="checkbox" class="product-check" data-name="Banana" data-price="5">
+            <img src="banana.jpeg" alt="Banana">
+            <label>Banana $5/kg</label>
+            <input type="number" class="product-qty" min="1" max="10" value="1" disabled>
+        </div>
+
+        <div class="product">
+            <input type="checkbox" class="product-check" data-name="Avocado" data-price="7">
+            <img src="avocado.jpeg" alt="Avocado">
+            <label>Avocado $7/kg</label>
+            <input type="number" class="product-qty" min="1" max="10" value="1" disabled>
+        </div>
+
+        <button class="submit-btn" onclick="submitOrder()">SUBMIT</button>
+    </div>
+
+    <script>
+        document.querySelectorAll('.product-check').forEach(check => {
+            check.addEventListener('change', function () {
+                let qtyInput = this.closest('.product').querySelector('.product-qty');
+                qtyInput.disabled = !this.checked;
+            });
+        });
+
+        function submitOrder() {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const email = document.getElementById('email').value;
+            
+            const products = [];
+            document.querySelectorAll('.product-check:checked').forEach(check => {
+                const productName = check.getAttribute('data-name');
+                const price = check.getAttribute('data-price');
+                const quantity = check.closest('.product').querySelector('.product-qty').value;
+                products.push({ name: productName, price, quantity });
+            });
+
+            if (!name || !phone || !email || products.length === 0) {
+                alert("Please fill all fields and select at least one product.");
+                return;
+            }
+
+            const orderData = { name, phone, email, products };
+            localStorage.setItem('order', JSON.stringify(orderData));
+            window.location.href = "receipt.html";
+        }
+    </script>
+</body>
+</html>

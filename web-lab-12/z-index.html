@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23bce1239</title>
+    <style>
+        .container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
+        .box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            opacity: 0.9;
+            transition: all 0.3s ease-in-out;
+        }
+        #id1 {
+            background-color: red;
+            top: 20px;
+            z-index: 0;
+        }
+        #id2 {
+            background-color: blue;
+            top: 40px;
+            left: 20px;
+            z-index: 0;
+        }
+        #id3 {
+            background-color: yellow;
+            top: 60px;
+            left: 40px;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="id1" class="box">1</div>
+        <div id="id2" class="box">1</div>
+        <div id="id3" class="box">10</div>
+    </div>
+    <script>
+        let boxes = document.querySelectorAll(".box");
+        boxes.forEach(box => {
+            box.addEventListener("mouseover", function() {
+                boxes.forEach(b => {
+                    b.style.zIndex = 0;
+                    b.innerText = "1";
+                });
+                this.style.zIndex = 1;
+                this.innerText = "10";
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+
+<head>
+    <title>My Professional Resume</title>
+    <style>
+        body {
+            margin: 0;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+        }
+
+        .container {
+            display: grid;
+            grid-template-rows: 20% 80%;
+            height: 100vh;
+        }
+
+        .heading{
+            background-color: rgb(209, 232, 237);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: black;
+            color: aliceblue;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 20% 50% 30%;
+        }
+
+        nav {
+            background-color: rgba(17, 129, 141, 0.5);
+            color: white;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 15px 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        .main {
+            padding: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            height: 70vh;
+            overflow-y: auto;
+        }
+        .main header {
+            background-color: rgb(0, 0, 0);
+            padding: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color:aliceblue;
+            border-radius: 20px;
+        }
+
+        aside {
+            background-color: rgba(8, 71, 78, 0.5);
+            color: white;
+            padding: 10px;
+        }
+
+        aside h3 {
+            margin-top: 3;
+        }
+        
+        .s1{
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(119, 119, 119);
+        }
+        .s2{
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(33, 33, 33);
+        }
+        .s3{
+            font-size: 15px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgb(248, 246, 246);
+            background-color: rgba(10, 109, 1, 0.6);
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .s4{
+            background-color: black;
+            color:aliceblue;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            
+        }
+        details{
+            background-color: rgba(165, 42, 42,0.9);
+            color: antiquewhite;
+            border-radius: 20px;
+            padding: 20px;
+        }
+        img{
+            border-radius: 50%;
+            height: 200px;
+            margin-top: 20%;
+            display:block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .quick-facts{
+            background-color:rgba(6, 73, 80, 0.5);
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Heading -->
+        <header class="heading">MY PROFESSIONAL RESUME</header>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Navigation -->
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#media">Media</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Main Content -->
+            <div class="main">
+                <header>Tejaswwini<br><br>
+                    <div class="s1"> Software Engineer | Problem Solver | Innovator</div>
+                </header>
+
+                
+                <section id="about">
+                    <h2>About me</h2>
+                    <p class="s1"> Motivated software engineer with 5+ years experience in building scalable web applications.</p>
+
+                    <figure>
+                    <img src="img1.png"><br>
+                    <figcaption  align="center">Tejaswwini SS<br>Software Developer</figcaption>
+                    </figure>
+                    
+                </section>
+                <br>
+
+                <section id="education">
+                    <h2>Education</h2>
+                    Bachelor of Technology in Computer Science Engineering.
+                    <p class="s1">Vellore Institute of Technology, 2023-2027</p>
+                </section>
+                <br>
+
+                <section id="experience">
+                    <h2>Experience</h2>
+                    <h3>Software Engineer</h3>
+                    <p class="s1">ABC Corporation,<br> 2019 - Present</p>
+                    <ul class="s2">
+                        <li>Developed and managed web applications using javaScript and python.</li>
+                        <li>Optimized application performance and improved query response by 20%.</li>
+                    </ul>
+                </section>
+                <br>
+
+                <section id="skills">
+                    <h2>Skills</h2>
+                    <div class="s3">
+                        <ul>
+                            <li>Proficiency in HTML5, CSS3, and JavaScript</li><br>
+                            <li>Powerpoint and Excel</li><br>
+                            <li>React JS and Flutter</li>
+                        </ul>
+                    </div>
+                    <br><br>
+
+                    <p><b>PROGRESS:</b></p><br>
+                    <label for="javaScript">JavaScript</label><br>
+                    <progress id="javaScript" value="40" min="0" max="100"></progress>40%<br><br>
+                    <label for="HTML5">HTML5</label><br>
+                    <progress id="HTML5" value="100" min="0" max="100"></progress>100%<br><br>
+                    <label for="CSS3">CSS3</label><br>
+                    <progress id="CSS3" value="80" min="0" max="100"></progress>80%<br><br>
+                    
+                    <p><b>METERS:</b></p>
+                    <ul>
+                        <li>
+                            <label for="certificate">Completion of Web Developement Certification course offered by Stanford University.</label><br>
+                            <meter id="certificate" value="60" min="0" max="100"></meter> 60%
+                        </li><br><br>
+                        <li>
+                            <label for="">Completion of Microsoft Azure AI Certification course offered by Microsoft.</label><br>
+                            <meter id="certificate" value="85" min="0" max="100"></meter> 85%      
+                        </li>
+                    </ul><br>
+
+                        <ul>
+                            <li>
+                        <details>
+                            <summary>Hobbies</summary>
+                            <p>Interior Designing, never fails to keep me occupied in my free time. I have completed a course offered by The University of California in Advanced Interior Designing.</p>
+                        </details>
+                        </li><br>
+
+                        <li>
+                        <details>
+                            <summary>Extracurricular Activities</summary>
+                            <p>Singing, Painting, Photography and Sports are the other activities I am actively involved in.</p>
+                        </details>
+                        </li><br>
+
+                        <li>
+                        <details>
+                            <summary>Future Goals</summary>
+                            <p>Develop my managerial and leadership skills. Develop the app I have been working on, that has great scope in improving lives of disables people.</p>
+                        </details>
+                    </li><br>
+
+                    </ul>
+            
+                </section>
+                <br>
+
+                <div id="media">
+                    <h2>Media</h2>
+
+                </div>
+                <br>
+
+            </div>
+
+            <!-- aside -->
+            <aside>
+                <h3>Quick Facts</h3>
+                <ul>
+                    <li>Proficiency in HTML5, CSS3, and JavaScript</li><br>
+                    <li>5+ years of professional experience</li><br>
+                    <li>Certified Scrum Master</li><br>
+                    <li>Published 3 Technical Articles</li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+        <footer class="s4">
+            Contact: 8310790074 | Email: tejaswwini.ss2023@vitstudent.ac.in
+        </footer>
+</body>
+</html>

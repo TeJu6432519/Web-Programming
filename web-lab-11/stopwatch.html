@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23bce1239</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .stopwatch, .dob, .char-counter {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Stopwatch -->
+    <div class="stopwatch">
+        <h3>Stopwatch</h3>
+        <p id="display">00:00:00</p>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- Date of Birth Age Calculator -->
+    <div class="dob">
+        <h3>Calculate Age</h3>
+        <label for="dob">Enter DOB:</label>
+        <input type="date" id="dob">
+        <p id="ageResult">Age will be shown here.</p>
+    </div>
+
+    <!-- Character Counter -->
+    <div class="char-counter">
+        <h3>Character Counter</h3>
+        <textarea id="textArea" placeholder="Type here..."></textarea>
+        <p>Characters: <span id="charCount">0</span></p>
+    </div>
+
+    <script>
+        // Stopwatch Logic
+        let startTime, updatedTime, difference, timerInterval;
+        let running = false;
+
+        const display = document.getElementById('display');
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+        const resetButton = document.getElementById('reset');
+
+        function startTimer() {
+            if (!running) {
+                startTime = new Date().getTime() - (difference || 0);
+                timerInterval = setInterval(updateDisplay, 10);
+                running = true;
+            }
+        }
+
+        function stopTimer() {
+            if (running) {
+                clearInterval(timerInterval);
+                difference = new Date().getTime() - startTime;
+                running = false;
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            running = false;
+            difference = 0;
+            display.textContent = "00:00:00";
+        }
+
+        function updateDisplay() {
+            updatedTime = new Date().getTime() - startTime;
+            let seconds = Math.floor((updatedTime / 1000) % 60);
+            let minutes = Math.floor((updatedTime / (1000 * 60)) % 60);
+            let milliseconds = Math.floor((updatedTime % 1000) / 10);
+            
+            display.textContent = 
+                (minutes < 10 ? "0" : "") + minutes + ":" +
+                (seconds < 10 ? "0" : "") + seconds + ":" +
+                (milliseconds < 10 ? "0" : "") + milliseconds;
+        }
+
+        startButton.addEventListener('click', startTimer);
+        stopButton.addEventListener('click', stopTimer);
+        resetButton.addEventListener('click', resetTimer);
+
+        // Age Calculator Logic
+        const dobInput = document.getElementById('dob');
+        const ageResult = document.getElementById('ageResult');
+
+        dobInput.addEventListener('mouseover', function () {
+            let dobValue = dobInput.value;
+            if (dobValue) {
+                let dob = new Date(dobValue);
+                let today = new Date();
+                let age = today.getFullYear() - dob.getFullYear();
+                let monthDiff = today.getMonth() - dob.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                    age--;
+                }
+                ageResult.textContent = "Your age: " + age + " years";
+            } else {
+                ageResult.textContent = "Please enter a valid DOB.";
+            }
+        });
+
+        // Character Counter Logic
+        const textArea = document.getElementById('textArea');
+        const charCount = document.getElementById('charCount');
+
+        textArea.addEventListener('input', function () {
+            charCount.textContent = textArea.value.length;
+        });
+
+    </script>
+
+</body>
+</html>

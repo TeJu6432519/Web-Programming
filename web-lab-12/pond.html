@@ -1,0 +1,199 @@
+
+<html>
+    <head>
+        <title>23bce1239</title>
+    </head>
+    <body>
+        <canvas id="canvas" height="400" width="600" style="border: 1px solid black"></canvas>
+
+    <script>
+    let c=document.getElementById("canvas");
+    var  ctx=c.getContext("2d");
+    ctx.beginPath();
+    ctx.arc(99,352,9,0,2*Math.PI);
+    ctx.fillStyle="grey";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(112,363,9,0,2*Math.PI);
+    ctx.fillStyle="grey";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(119,349,9,0,2*Math.PI);
+    ctx.fillStyle="grey";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(479,361,9,0,2*Math.PI);
+    ctx.fillStyle="grey";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(493,368,8,0,2*Math.PI);
+    ctx.fillStyle="grey";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(449,323,25,0,2*Math.PI);
+    ctx.fillStyle="yellow";
+    ctx.strokeStyle="black";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(474,304,16,0,2*Math.PI);
+    ctx.fillStyle="yellow";
+    ctx.strokeStyle="black";
+    ctx.lineWidth="1";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(478,298,3,0,2*Math.PI);
+    ctx.fillStyle="black";
+    ctx.strokeStyle="black";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    
+
+    ctx.beginPath();
+    ctx.arc(519,62,40,0,2*Math.PI);
+    ctx.fillStyle="yellow";
+    ctx.strokeStyle="yellow"
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.fillStyle="orange";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.strokeRect(50,205,99,100);
+    ctx.fillRect(50,205,99,100);
+    
+    ctx.beginPath();
+    ctx.fillStyle="blue";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.fillRect(62,224,24,24);
+
+    ctx.beginPath();
+    ctx.fillStyle="brown";
+    ctx.strokeStyle="blue";
+    ctx.lineWidth=1;
+    ctx.fill();
+    ctx.fillRect(90,261,15,45);
+    ctx.strokeRect(90,260,15,45);
+
+    ctx.beginPath();
+    ctx.moveTo(100,153);
+    ctx.lineTo(50,205);
+    ctx.lineTo(150,205);
+    ctx.closePath();
+    ctx.fillStyle="red";
+    ctx.strokeStyle="blue";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(507,313);
+    ctx.lineTo(488,303);
+    ctx.lineTo(489,321);
+    ctx.closePath();
+    ctx.fillStyle="orange";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.ellipse(300,230,135,60,0,0,2*Math.PI);
+    ctx.fillStyle="lightblue";
+    ctx.fill();
+    ctx.strokeStyle="darkblue";
+    ctx.stroke();
+
+    
+    
+
+    ctx.beginPath();
+    ctx.ellipse(540,273,40,12,Math.PI/4,0,2*Math.PI);
+    ctx.fillStyle="green";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.ellipse(540,273,40,12,3*Math.PI/4,0,2*Math.PI);
+    ctx.fillStyle="green";
+    ctx.fill();
+    
+
+    ctx.beginPath();
+    ctx.ellipse(539,242,40,25,0,0,2*Math.PI);
+    ctx.fillStyle="pink";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.ellipse(525,242,40,20,Math.PI/2,0,2*Math.PI);
+    ctx.fillStyle="pink";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.ellipse(552,242,40,20,Math.PI/2,0,2*Math.PI);
+    ctx.fillStyle="pink";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(541,242,10,0,2*Math.PI);
+    ctx.fillStyle="yellow";
+    ctx.fill();
+    
+    ctx.beginPath();
+    ctx.fillStyle="green";
+    ctx.fillRect(538,273,4,70);
+
+for (let i = 0; i < 12; i++) {
+let angle = (i * Math.PI) / 6;
+let x1 = 520+ Math.cos(angle) * 50;
+let y1 = 60+ Math.sin(angle) * 50;
+let x2 = 520 + Math.cos(angle) * 60;
+let y2 = 60 + Math.sin(angle) * 60;
+ctx.beginPath();
+ctx.moveTo(x1, y1);
+ctx.lineTo(x2, y2);
+ctx.strokeStyle="yellow";
+ctx.stroke();
+}
+
+
+ctx.beginPath();
+    ctx.moveTo(260,213);
+    ctx.lineTo(337,214);
+    ctx.lineTo(318,227);
+    ctx.lineTo(278,227);
+    ctx.closePath();
+  ctx.strokeStyle="lightblue";
+  ctx.stroke();
+    ctx.fillStyle="brown";
+    ctx.fill();
+
+</script>
+</body>
+</html>

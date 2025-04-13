@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>23bce1239</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            border: 2px solid black;
+            padding: 20px;
+            width: 300px;
+            position: relative;
+        }
+        .clock {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+        .error { 
+            color: red;
+            display: flex;
+         }
+        input, select, textarea {
+            margin-bottom: 10px;
+            display: block;
+            width: 100%;
+        }
+        .inline {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="clock" id="clock"></div>
+        <h2>Test JavaScript Form Validation</h2>
+        <form id="myForm">
+            Name*: <input type="text" name="name" id="name"><span class="error" id="nameError"></span>
+            Address*: <textarea name="address" id="address"></textarea><span class="error" id="addressError"></span>
+            Zip Code*: <input type="text" name="zipcode" id="zipcode"><span class="error" id="zipError"></span>
+            Country*: <select name="country" id="country"><option value="">Please select...</option><option>USA</option><option>India</option></select><span class="error" id="countryError"></span>
+            <div class="inline">Gender*: <input type="radio" name="gender" value="Male"> Male <input type="radio" name="gender" value="Female"> Female</div><span class="error" id="genderError"></span>
+            <div class="inline">Preferences: <input type="checkbox" name="preferences" value="Red"> Red <input type="checkbox" name="preferences" value="Green"> Green <input type="checkbox" name="preferences" value="Blue"> Blue</div>
+            Phone*: <input type="text" name="phone" id="phone"><span class="error" id="phoneError"></span>
+            Email*: <input type="text" name="email" id="email"><span class="error" id="emailError"></span>
+            Password*: <input type="password" name="password" id="password"><span class="error" id="passwordError"></span>
+            Verify Password*: <input type="password" name="verifyPassword" id="verifyPassword"><span class="error" id="verifyPasswordError"></span>
+            PAN No: <input type="text" name="pan" id="pan"><span class="error" id="panError"></span>
+            <button type="button" onclick="validateForm()">Submit</button>
+            <button type="button" onclick="printFormData()">Print</button>
+        </form>
+    </div>
+    <script>
+        function updateClock() {
+            document.getElementById('clock').innerText = "Time: "+new Date().toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+        
+        function validateForm() {
+            let valid = true;
+            let name = document.getElementById("name").value;
+            let address = document.getElementById("address").value;
+            let zipcode = document.getElementById("zipcode").value;
+            let country = document.getElementById("country").value;
+            let phone = document.getElementById("phone").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let verifyPassword = document.getElementById("verifyPassword").value;
+            let pan = document.getElementById("pan").value;
+            
+            document.querySelectorAll(".error").forEach(e => e.innerText = "");
+            
+            if (!name || name.length > 15) {
+                document.getElementById("nameError").innerText = "Name is required (max 15 chars)";
+                valid = false;
+            }
+            if (!address) {
+                document.getElementById("addressError").innerText = "Address is required";
+                valid = false;
+            }
+            if (!zipcode || isNaN(zipcode)) {
+                document.getElementById("zipError").innerText = "Zip Code must be numeric";
+                valid = false;
+            }
+            if (!country) {
+                document.getElementById("countryError").innerText = "Country is required";
+                valid = false;
+            }
+            if (!phone || isNaN(phone) || phone.length !== 10) {
+                document.getElementById("phoneError").innerText = "Phone must be 10 digits";
+                valid = false;
+            }
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.match(emailPattern)) {
+                document.getElementById("emailError").innerText = "Invalid Email";
+                valid = false;
+            }
+            let passwordPattern = /^(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&*]).{8,15}$/;
+            if (!password.match(passwordPattern)) {
+                document.getElementById("passwordError").innerText = "Password must be 8-15 chars, include number, letter, special char";
+                valid = false;
+            }
+            if (password !== verifyPassword) {
+                document.getElementById("verifyPasswordError").innerText = "Passwords do not match";
+                valid = false;
+            }
+            let panPattern = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+            if (pan && !pan.match(panPattern)) {
+                document.getElementById("panError").innerText = "Invalid PAN format";
+                valid = false;
+            }
+            return valid;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Space</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        h1 {
+            text-align: center;
+            color: antiquewhite;
+            margin-top: 20px;
+        }
+        .circle-frame {
+            width: 200px; 
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden; 
+            margin: 20px auto; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; 
+        }
+        .circle-frame img {
+            width: auto; 
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .circle-frame:hover img {
+            transform: scale(1.2);
+        }
+        .content {
+            text-align: center;
+            color: antiquewhite;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>MY SPACE</h1>
+        <div class="circle-frame">
+          
+            <img src="img1.png" usemap="#image-map" alt="Profile Image">
+            <map name="image-map">
+                <!--click on the face to go to signature page-->>
+                <area target="_blank" alt="Signature" title="My Signature" href="sign.png" coords="60,60,100,100" shape="rect">
+            </map>
+        </div>
+        <div class="content">
+            <ul>
+                <li>I am a tech enthusiast with a passion for solving problems.</li>
+                <li>In my free time, I enjoy exploring new programming concepts.</li>
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

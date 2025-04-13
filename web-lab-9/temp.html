@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Analysis</title>
+  <style>
+    table {
+      width: 50%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">New York City Temperature Analysis</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Temperature (°F)</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody id="temperatureTable"></tbody>
+  </table>
+
+  <div style="text-align:center;">
+    <p id="hotDays"></p>
+    <p id="pleasantDays"></p>
+    <p id="coldDays"></p>
+  </div>
+
+  <script>
+    // Array of temperatures
+    const temperatures = [55, 62, 68, 74, 59, 45, 41, 58, 60, 67, 65, 78, 82, 88, 91, 92, 90, 93, 87, 80, 78, 79, 72, 68, 61, 59, 55, 65];
+
+    // Counters for categories
+    let hotDays = 0;
+    let pleasantDays = 0;
+    let coldDays = 0;
+
+    // Function to categorize temperatures and count the number of days in each category
+    function categorizeTemperature() {
+      const tableBody = document.getElementById('temperatureTable');
+      temperatures.forEach((temp, index) => {
+        let category;
+        if (temp >= 85) {
+          category = 'HOT';
+          hotDays++;
+        } else if (temp >= 60) {
+          category = 'PLEASANT';
+          pleasantDays++;
+        } else {
+          category = 'COLD';
+          coldDays++;
+        }
+
+        // Adding row to the table
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>Day ${index + 1}</td><td>${temp}</td><td>${category}</td>`;
+        tableBody.appendChild(row);
+      });
+
+      // Displaying the results
+      document.getElementById('hotDays').textContent = `Number of HOT days: ${hotDays}`;
+      document.getElementById('pleasantDays').textContent = `Number of PLEASANT days: ${pleasantDays}`;
+      document.getElementById('coldDays').textContent = `Number of COLD days: ${coldDays}`;
+    }
+
+    // Run the categorization when the page loads
+    window.onload = categorizeTemperature;
+  </script>
+
+</body>
+</html>

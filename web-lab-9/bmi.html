@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BMI Calculator</title>
+    <script>
+        function calculateBMI() {
+            let weight = parseFloat(document.getElementById("weight").value);
+            let feet = parseFloat(document.getElementById("feet").value);
+            let inches = parseFloat(document.getElementById("inches").value);
+            let gender = document.getElementById("gender").value;
+            
+            let heightInInches = (feet * 12) + inches;
+            let bmi = (703 * weight) / (heightInInches * heightInInches);
+            
+            let status = "";
+            if (gender === "male") {
+                if (bmi < 17.50) status = "Anorexia";
+                else if (bmi >= 17.51 && bmi <= 20.70) status = "Underweight";
+                else if (bmi >= 20.71 && bmi <= 26.40) status = "Ideal Range";
+                else if (bmi >= 26.41 && bmi <= 27.80) status = "Marginally Overweight";
+                else if (bmi >= 27.81 && bmi <= 31.10) status = "Overweight";
+                else status = "Very Overweight or Obese";
+            } else {
+                if (bmi < 17.50) status = "Anorexia";
+                else if (bmi >= 17.51 && bmi <= 19.10) status = "Underweight";
+                else if (bmi >= 19.11 && bmi <= 25.80) status = "Ideal Range";
+                else if (bmi >= 25.81 && bmi <= 27.30) status = "Marginally Overweight";
+                else if (bmi >= 27.31 && bmi <= 32.30) status = "Overweight";
+                else status = "Very Overweight or Obese";
+            }
+            
+            alert("Your BMI: " + bmi.toFixed(2) + "\nStatus: " + status);
+        }
+    </script>
+</head>
+<body>
+    <h2>BMI Calculator</h2>
+    <label for="gender">Gender:</label>
+    <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+    </select>
+    <br><br>
+    <label for="weight">Enter Your Weight (in pounds):</label>
+    <input type="number" id="weight">
+    <br><br>
+    <label for="feet">Enter Your Height:</label>
+    <input type="number" id="feet" placeholder="Feet"> 
+    <input type="number" id="inches" placeholder="Inches">
+    <br><br>
+    <button onclick="calculateBMI()">Calculate</button>
+</body>
+</html>
